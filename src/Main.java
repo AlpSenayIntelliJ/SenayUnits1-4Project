@@ -12,6 +12,7 @@ public class Main {
         RoadTrip trip = new RoadTrip(name, age);
         trip.checkIfCanDrive();
         trip.pickCar();
+        trip.pickDestination();
 
 
     }
