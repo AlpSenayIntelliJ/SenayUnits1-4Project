@@ -6,6 +6,7 @@ public class RoadTrip {
     private int age;
     private String vehicle;
     private int money;
+    private int speed;
 
     public RoadTrip() { money = 1000; };
 
@@ -26,29 +27,44 @@ public class RoadTrip {
 
     public void pickCar() {
         System.out.println("Select a vehicle for the road trip:");
-        System.out.println("A. Sedan car");
-        System.out.println("B. RV");
-        System.out.println("C. Pickup truck");
-        System.out.println("D. Golf cart");
+        System.out.println("a. Sedan car");
+        System.out.println("b. RV");
+        System.out.println("c. Pickup truck");
+        System.out.println("d. Golf cart");
         int speed1 = (int) (Math.random()*21+50);
         int speed2 = (int) (Math.random()*21+40);
-        int speed3 = (int) (Math.random()*6+10)
+        int speed3 = (int) (Math.random()*6+10);
         String carPick = scan.nextLine();
-        if (carPick.equals("A")) {
+        while (!carPick.equals("a") && !carPick.equals("b") && !carPick.equals("c") && !carPick.equals("d")) {
+            System.out.println("------------------------------");
+            System.out.println("Please enter a valid input");
+            System.out.println("------------------------------");
+            System.out.println("Select a vehicle for the road trip:");
+            System.out.println("a. Sedan car");
+            System.out.println("b. RV");
+            System.out.println("c. Pickup truck");
+            System.out.println("d. Golf cart");
+            carPick = scan.nextLine();
+        }
+        if (carPick.equals("a")) {
             vehicle = "car";
             System.out.println("Ok, you have chosen a sedan car! This car will go " + speed1 + " miles per hour");
+            speed = speed1;
         }
-        else if (carPick.equals("B")) {
+        else if (carPick.equals("b")) {
             vehicle = "RV";
             System.out.println("Ok, you have chosen an RV! This RV will go " + speed2 + " miles per hour");
+            speed = speed2;
         }
-        else if (carPick.equals("C")) {
+        else if (carPick.equals("c")) {
             vehicle = "pickup truck";
             System.out.println("Ok, you have chosen a pickup truck! This truck will go " + speed1 + " miles per hour");
+            speed = speed1;
         }
-        else if (carPick.equals("D")) {
+        else if (carPick.equals("d")) {
             vehicle = "golf cart";
             System.out.println("Ok, you have chosen a golf cart! This cart will go " + speed3 + " miles per hour");
+            speed = speed3;
         }
         else {
             System.out.println("Please enter a valid input");
@@ -59,22 +75,46 @@ public class RoadTrip {
     public void pickDestination() {
         System.out.println("------------------------------");
         System.out.println("Select a destination:");
-        System.out.println("A. Miami");
-        System.out.println("B. Chicago");
-        System.out.println("C. Boston");
-        System.out.println("D. Washington DC");
-        String carPick = scan.nextLine();
-        if (carPick.equals("A")) {
-            System.out.println("Ok, you have chosen to go to Miami! Your " + vehicle + " will get there in ");
+        System.out.println("a. Miami");
+        System.out.println("b. Chicago");
+        System.out.println("c. Boston");
+        System.out.println("d. Washington DC");
+        String destPick = scan.nextLine();
+        int distance = 0;
+        while (!destPick.equals("a") && !destPick.equals("b") && !destPick.equals("c") && !destPick.equals("d")) {
+            System.out.println("------------------------------");
+            System.out.println("Please enter a valid input");
+            System.out.println("------------------------------");
+            System.out.println("Select a destination:");
+            System.out.println("a. Miami");
+            System.out.println("b. Chicago");
+            System.out.println("c. Boston");
+            System.out.println("d. Washington DC");
+            destPick = scan.nextLine();
         }
-        else if (carPick.equals("B")) {
-            System.out.println("Ok, you have chosen to go to Chicago! ");
+        if (destPick.equals("a")) {
+            distance = 1289;
+            System.out.println("Ok, you have chosen to go to Miami! Your " + vehicle +
+                    " will get there in about " + (distance/speed) + " hours!");
+            System.out.println("------------------------------");
         }
-        else if (carPick.equals("C")) {
-            System.out.println("Ok, you have chosen to go to Boston! ");
+        else if (destPick.equals("b")) {
+            distance = 790;
+            System.out.println("Ok, you have chosen to go to Chicago! Your " + vehicle +
+                    " will get there in about " + (distance/speed) + " hours!");
+            System.out.println("------------------------------");
         }
-        else if (carPick.equals("D")) {
-            System.out.println("Ok, you have chosen to go to Washington DC! ");
+        else if (destPick.equals("c")) {
+            distance = 216;
+            System.out.println("Ok, you have chosen to go to Boston! Your " + vehicle +
+                    " will get there in about " + (distance/speed) + " hours!");
+            System.out.println("------------------------------");
+        }
+        else if (destPick.equals("d")) {
+            distance = 226;
+            System.out.println("Ok, you have chosen to go to Washington DC! Your " + vehicle +
+                    " will get there in about " + (distance/speed) + " hours!");
+            System.out.println("------------------------------");
         }
         else {
             System.out.println("Please enter a valid input");
