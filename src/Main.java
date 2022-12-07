@@ -13,6 +13,7 @@ public class Main {
         trip.checkIfCanDrive();
         trip.pickCar();
         trip.pickDestination();
+        trip.play();
 
 
     }
