@@ -7,8 +7,9 @@ public class RoadTrip {
     private Vehicle vehicle;
     private String destination;
     private int hours;
+    private int money;
 
-    public RoadTrip() {  };
+    public RoadTrip() { money = 1000; };
 
     public RoadTrip(String name, int age) {
         this.name = name;
@@ -91,17 +92,9 @@ public class RoadTrip {
             if (hoursTrav == 1) {
                 System.out.println("You have gone " + hoursTrav + " hour!");
                 System.out.println("------------------------------");
-                if (hoursTrav == hours) {
-                    System.out.println("Hooray you have made it to " + destination + "!\n------------------------------");
-                    System.exit(0);
-                }
             } else {
                 System.out.println("You have gone " + hoursTrav + " hours!");
                 System.out.println("------------------------------");
-                if (hoursTrav == hours) {
-                    System.out.println("Hooray you have made it to " + destination + "!\n------------------------------");
-                    System.exit(0);
-                }
             }
 
 
@@ -197,5 +190,6 @@ public class RoadTrip {
                 }
             }
         }
+        System.out.println("---End of road trip!---");
     }
 }
