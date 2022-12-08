@@ -2,20 +2,20 @@ import java.util.Scanner;
 public class RoadTrip {
     Scanner scan = new Scanner(System.in);
 
+    /* instance variables */
     private String name;
     private int age;
     private Vehicle vehicle;
     private String destination;
     private int hours;
-    private int money;
 
-    public RoadTrip() { money = 1000; };
-
+    /* constructor */
     public RoadTrip(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
+    /* the method below checks if the user is at a driving age (makes the program more realistic) */
     public void checkIfCanDrive() {
         if (age >= 18) {
             System.out.println("Ok, you are eligible to drive!");
@@ -25,8 +25,10 @@ public class RoadTrip {
         }
     }
 
+    /* user choosing car */
     public void pickCar() {
         String carPick = "";
+        /* while loop for if there is no valid input and so that it can run again */
         while (!carPick.equals("a") && !carPick.equals("b") && !carPick.equals("c") && !carPick.equals("d")) {
             System.out.println("------------------------------");
             System.out.println("Select a vehicle for the road trip:");
@@ -45,9 +47,11 @@ public class RoadTrip {
         System.out.println("Ok, you have chosen a " + vehicle + "! This will go at a speed of " + vehicle.getSpeed() + " miles per hour");
     }
 
+    /* user choosing destination */
     public void pickDestination() {
         String destPick = "";
         int distance = 0;
+        /* while loop for if there is no valid input and so that it can run again; same as the one before*/
         while (!destPick.equals("a") && !destPick.equals("b") && !destPick.equals("c") && !destPick.equals("d")) {
             System.out.println("------------------------------");
             System.out.println("Select a destination:");
@@ -59,7 +63,7 @@ public class RoadTrip {
         }
         switch (destPick) {
             case "a" -> {
-                distance = 1289;
+                distance = 1289; /* actual distances from new york to these cities in miles */
                 destination = "Miami";
             }
             case "b" -> {
@@ -81,11 +85,15 @@ public class RoadTrip {
         System.out.println("------------------------------");
     }
 
+    /* everything is set, now the the simulation can be played */
      public void play() {
         System.out.println("Let the road trip begin!");
         System.out.println("------------------------------");
+
+        /* for loop condition set so that the loop will stop when all hours are covered in the road trip */
         for (int i = 0; i < hours;) {
-            int hoursTrav = Math.min((int) (Math.random()*6+1), hours-i);
+            int hoursTrav = Math.min((int) (Math.random()*6+1), hours-i); /* to make sure that every increment of hours
+            is not leaving a remainder and sums up in total to the total number of hours */
             i += hoursTrav;
 
 
@@ -190,6 +198,7 @@ public class RoadTrip {
                 }
             }
         }
-        System.out.println("---End of road trip!---");
+        /* closing out the program, indicating if user won */
+        System.out.println("------------------------------\nHooray you have made it to " + destination + "!\n---End of road trip!---");
     }
 }
