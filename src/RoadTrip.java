@@ -5,10 +5,10 @@ public class RoadTrip {
     private String name;
     private int age;
     private Vehicle vehicle;
-    private int money;
+    private String destination;
     private int hours;
 
-    public RoadTrip() { money = 1000; };
+    public RoadTrip() {  };
 
     public RoadTrip(String name, int age) {
         this.name = name;
@@ -59,23 +59,23 @@ public class RoadTrip {
         switch (destPick) {
             case "a" -> {
                 distance = 1289;
-                destPick = "Miami";
+                destination = "Miami";
             }
             case "b" -> {
                 distance = 790;
-                destPick = "Chicago";
+                destination = "Chicago";
             }
             case "c" -> {
                 distance = 871;
-                destPick = "Atlanta";
+                destination = "Atlanta";
             }
             default -> {
                 distance = 372;
-                destPick = "Montreal";
+                destination = "Montreal";
             }
         }
         hours = distance / vehicle.getSpeed();
-        System.out.println("Ok, you have chosen to go to " + destPick + "! Your " + vehicle +
+        System.out.println("Ok, you have chosen to go to " + destination + "! Your " + vehicle +
                 " will get there in about " + (hours) + " hours!");
         System.out.println("------------------------------");
     }
@@ -88,16 +88,118 @@ public class RoadTrip {
             i += hoursTrav;
             if (hoursTrav == 1) {
                 System.out.println("You have gone " + hoursTrav + " hour!");
+                System.out.println("------------------------------");
             } else {
                 System.out.println("You have gone " + hoursTrav + " hours!");
-            }
-            int crashChance = (int) (Math.random()*20+1);
-            if (crashChance == vehicle.getRisk()) {
-                System.out.print("Oh no! You have crashed!");
                 System.out.println("------------------------------");
-                System.exit(0);
+            }
+            int genStoryNum = (int) (Math.random()*7+1);
+            if (genStoryNum == 1) {
+                System.out.print("Would you like to take a food break? y n ");
+                String userAnswer = scan.nextLine();
+                if (userAnswer.equals("y")) {
+                    int genFoodNum = (int) (Math.random()*3+1);
+                    if (genFoodNum == 1) {
+                        System.out.println("Ok, you went to go eat at McDonald's");
+                    }
+                    else if (genFoodNum == 2) {
+                        System.out.println("Ok, you went to go eat at Wendy's");
+                    }
+                    else {
+                        System.out.println("Ok, you went to go eat at Arby's");
+                    }
+                }
+            }
+            else if (genStoryNum == 2) {
+                System.out.print("Some math for you so you are not dozing off the sleep while driving: What is 7*6? ");
+                int userAnswer = scan.nextInt();
+                if (userAnswer == 42) {
+                    System.out.println("Ok, continue driving");
+                }
+                else {
+                    System.out.println("Cop pulls you over while he spots you sleeping, tells you to put your hands up and brings you to the nearest mental hospital");
+                    System.out.println("------------------------------");
+                    System.exit(0);
+                }
+            }
+            else if (genStoryNum == 3) {
+                System.out.print("Cop pulls you over and asks for your driving license. What is your name? ");
+                String userAnswer = scan.nextLine();
+                if (userAnswer.equals(name)) {
+                    System.out.println("Ok, you can pass");
+                }
+                else {
+                    System.out.println("You have failed the stop. The cop suspects you have a fake ID");
+                    System.out.println("------------------------------");
+                    System.exit(0);
+                }
+            }
+            else if (genStoryNum == 4) {
+                System.out.print("There is a road bump in front of you. Enter a speed to pass it successfully: ");
+                int userAnswer = scan.nextInt();
+                if (userAnswer >= 7) {
+                    System.out.println("Oh no, you went too fast and your " + vehicle + " broke down");
+                    System.out.println("------------------------------");
+                    System.exit(0);
+                }
+                else {
+                    System.out.println("Ok, you can pass");
+                }
+            }
+            else if (genStoryNum == 5) {
+                System.out.print("There is a stop sign ahead, stop or go? ");
+                String userAnswer = scan.nextLine();
+                if (userAnswer.equals("stop")) {
+                    System.out.println("Ok, you can pass");
+                }
+                else {
+                    System.out.println("Oh no, you went too fast and you hit a pedestrian!\nCops pull up and arrest you");
+                    System.out.println("------------------------------");
+                    System.exit(0);
+                }
+            }
+            else if (genStoryNum == 6) {
+                System.out.print("The traffic light is about to turn red, stop or go? ");
+                String userAnswer = scan.nextLine();
+                if (userAnswer.equals("stop")) {
+                    System.out.println("Ok, you can pass");
+                }
+                else {
+                    System.out.println("Cop spots you zooming past a red light, pulls you over you get a ticket. He tells you next time you do that you are done...");
+                    System.out.println("------------------------------");
+                }
+            }
+            else if (genStoryNum == 7) {
+                System.out.print("You are on the very left lane on the highway and there is someone tailgating you. Let them pass (l) or act stubborn? (a) ");
+                String userAnswer = scan.nextLine();
+                if (userAnswer.equals("l")) {
+                    System.out.println("Ok, they passed you and no conflicts arose");
+                }
+                else {
+                    System.out.println("BOOM! The angry driver hits your " + vehicle + " from behind and zooms off into the distance...");
+                    System.out.println("------------------------------");
+                    System.exit(0);
+                }
+            }
+            else {
+                int crashChance = (int) (Math.random()*5+1);
+                if (crashChance == vehicle.getRisk()) {
+                    int genNum = (int) ((Math.random()*3+1));
+                    if (genNum == 1) {
+                        System.out.print("Oh no! You were invovled in a multi-vehicle accident!\nYou weren't able to make it to " + destination + " :(");
+                    }
+                    else if (genNum == 2) {
+                        System.out.print("Oh no! You had a head-on accident with a drunk driver!\nYou weren't able to make it to " + destination + " :(");
+                    } else {
+                        System.out.print("Oh no! You hit the side of the highway by accident!\nYou weren't able to make it to " + destination + " :(");
+                    }
+                    System.out.println("\n------------------------------");
+                    System.exit(0);
+                }
+                else {
+                    System.out.println("Peaceful driving...");
+                }
             }
         }
-
     }
 }
