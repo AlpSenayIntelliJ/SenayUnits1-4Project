@@ -9,7 +9,7 @@ public class RoadTrip {
     private String destination;
     private int hours;
 
-    public RoadTrip() {};
+    public RoadTrip() { };
 
     /* constructor */
     public RoadTrip(String name, int age) {
