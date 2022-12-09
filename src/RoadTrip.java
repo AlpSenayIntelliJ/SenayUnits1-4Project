@@ -9,6 +9,8 @@ public class RoadTrip {
     private String destination;
     private int hours;
 
+    public RoadTrip() {};
+
     /* constructor */
     public RoadTrip(String name, int age) {
         this.name = name;
@@ -106,7 +108,7 @@ public class RoadTrip {
             }
 
 
-            int generateStory = (int) (Math.random() * 7 + 1);
+            int generateStory = (int) (Math.random() * 8 + 1);
 
             if (generateStory == 1) {
                 System.out.print("Would you like to take a food break? y n ");
@@ -124,6 +126,7 @@ public class RoadTrip {
             } else if (generateStory == 2) {
                 System.out.print("Some math for you so you are not dozing off sleeping while driving: What is 7*6? ");
                 int userAnswer2 = scan.nextInt();
+                scan.nextLine();
                 if (userAnswer2 == 42) {
                     System.out.println("Ok, continue driving");
                 } else {
@@ -144,6 +147,7 @@ public class RoadTrip {
             } else if (generateStory == 4) {
                 System.out.print("There is a road bump in front of you. Enter a speed to pass it successfully: ");
                 int userAnswer4 = scan.nextInt();
+                scan.nextLine();
                 if (userAnswer4 >= 7) {
                     System.out.println("Oh no, you went too fast and your " + vehicle + " broke down");
                     System.out.println("------------------------------");
@@ -177,6 +181,16 @@ public class RoadTrip {
                     System.out.println("Ok, they passed you and no conflicts arose");
                 } else {
                     System.out.println("BOOM! The angry driver hits your " + vehicle + " from behind and zooms off into the distance...");
+                    System.out.println("------------------------------");
+                    System.exit(0);
+                }
+            } else if (generateStory == 8) {
+                System.out.print("You are on the highway and you see a deer walking across the road. Brake (b) or continue (c) ");
+                String userAnswer8 = scan.nextLine();
+                if (userAnswer8.equals("b")) {
+                    System.out.println("Ok, the deer made it to the other side and no one got hurt");
+                } else {
+                    System.out.println("CRASH! You hit the deer and your " + vehicle + " has been damaged");
                     System.out.println("------------------------------");
                     System.exit(0);
                 }
